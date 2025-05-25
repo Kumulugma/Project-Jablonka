@@ -1,0 +1,88 @@
+/*
+Theme Name: Jablonka
+Theme URI: https://opencollective.com/blankslate
+Author: Bryan Hadaway
+Author URI: https://opencollective.com/blankslate#section-contributors
+Description: Donate: https://opencollective.com/blankslate. Learn: https://blankslate.me/. BlankSlate is the definitive WordPress boilerplate starter theme. I've carefully constructed the most clean and minimalist theme possible for designers and developers to use as a base to build websites for clients or to build completely custom themes from scratch. Clean, simple, unstyled, semi-minified, unformatted, and valid code, SEO-friendly, jQuery-enabled, no programmer comments, standardized and as white label as possible, and most importantly, the CSS is reset for cross-browser-compatability, with no intrusive visual CSS styles added whatsoever. A perfect skeleton theme. For support and suggestions, go to: https://github.com/bhadaway/blankslate/issues. Thank you.
+Tags: accessibility-ready, one-column, two-columns, custom-menu, featured-images, microformats, sticky-post, threaded-comments, translation-ready
+Version: 2024.2
+Requires at least: 5.2
+Tested up to: 6.5
+Requires PHP: 7.4
+License: GNU General Public License v3 or Later
+License URI: https://www.gnu.org/licenses/gpl.html
+Text Domain: blankslate
+
+BlankSlate WordPress Theme 2011-2024
+BlankSlate is distributed under the terms of the GNU GPL
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+body {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #212529;
+  background-color: #fff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  padding-top: 60px; /* jeśli masz sticky navbar */
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  color: #111;
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+a {
+  color: #0d6efd;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Przyjemne buttony */
+button, .btn {
+  font-family: inherit;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  border-radius: .375rem;
+}
+
+/* Jeśli robisz onepage z kotwicami */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Kolorowanie listy */
+.list-group-item {
+  background-color: #f8f9fa;
+  border: 1px solid #ddd;
+}
+
+.list-group-item:nth-child(odd) {
+  background-color: #e9ecef;
+}
+
