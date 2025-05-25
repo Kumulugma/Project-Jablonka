@@ -1,88 +1,449 @@
 /*
-Theme Name: Jablonka
-Theme URI: https://opencollective.com/blankslate
-Author: Bryan Hadaway
-Author URI: https://opencollective.com/blankslate#section-contributors
-Description: Donate: https://opencollective.com/blankslate. Learn: https://blankslate.me/. BlankSlate is the definitive WordPress boilerplate starter theme. I've carefully constructed the most clean and minimalist theme possible for designers and developers to use as a base to build websites for clients or to build completely custom themes from scratch. Clean, simple, unstyled, semi-minified, unformatted, and valid code, SEO-friendly, jQuery-enabled, no programmer comments, standardized and as white label as possible, and most importantly, the CSS is reset for cross-browser-compatability, with no intrusive visual CSS styles added whatsoever. A perfect skeleton theme. For support and suggestions, go to: https://github.com/bhadaway/blankslate/issues. Thank you.
+Theme Name: K3E Apple Theme
+Description: Motyw WordPress dla strony o jabłkach z pięknym designem i funkcjonalnością
 Tags: accessibility-ready, one-column, two-columns, custom-menu, featured-images, microformats, sticky-post, threaded-comments, translation-ready
-Version: 2024.2
+Version: 1.0.0
 Requires at least: 5.2
 Tested up to: 6.5
 Requires PHP: 7.4
 License: GNU General Public License v3 or Later
 License URI: https://www.gnu.org/licenses/gpl.html
-Text Domain: blankslate
-
-BlankSlate WordPress Theme 2011-2024
-BlankSlate is distributed under the terms of the GNU GPL
+Text Domain: k3e
 */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+:root {
+    --primary-color: #d81e1e;
+    --secondary-color: #e9c46a;
+    --background-color: transparent;
+    --text-color: #333;
+    --accent-color: #2a9d8f;
+}
+
+/* Reset i podstawowe style */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
 body {
-  font-family: 'Inter', sans-serif;
-  font-size: 16px;
-  line-height: 1.7;
-  color: #212529;
-  background-color: #fff;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  padding-top: 60px; /* jeśli masz sticky navbar */
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    position: relative;
+    min-height: 100vh;
+    /* Zaktualizowana ścieżka dla WordPress */
+    background-image: url('assets/images/bg.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Preloader - poprawiony */
+.preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.preloader.fade-out {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Jeśli preloader nie zniknie, ukryj go po 4 sekundach */
+.preloader {
+    animation: preloader-auto-hide 4s forwards;
+}
+
+@keyframes preloader-auto-hide {
+    0%, 75% { 
+        opacity: 1; 
+        visibility: visible; 
+    }
+    100% { 
+        opacity: 0; 
+        visibility: hidden; 
+        display: none; 
+    }
+}
+
+.apple-loader {
+    width: 120px;
+    height: 120px;
+    position: relative;
+    animation: pulse 1.5s infinite ease-in-out;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    transform: scale(0.7);
+    opacity: 0.5;
+    transition: all 1s ease-in-out;
+    /* Zaktualizowana ścieżka dla WordPress */
+    background-image: url('assets/images/loader.png');
+}
+
+.apple-loader.loaded {
+    transform: scale(1);
+    opacity: 1;
+}
+
+@keyframes pulse {
+    0% { transform: scale(0.7); opacity: 0.5; }
+    50% { transform: scale(0.8); opacity: 1; }
+    100% { transform: scale(0.7); opacity: 0.5; }
+}
+
+/* Background Overlay */
+.bg-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 243, 224, 0.5);
+    z-index: -1;
+}
+
+/* Header */
+.apple-header {
+    background: linear-gradient(135deg, var(--primary-color), #b54c3c);
+    color: white;
+    padding: 40px 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.apple-header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 20% 50%, rgba(233, 196, 106, 0.4) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.header-content {
+    position: relative;
+    z-index: 1;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-weight: 700;
-  line-height: 1.2;
-  margin-bottom: 1rem;
-  color: #111;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    color: #111;
 }
 
-p {
-  margin-bottom: 1rem;
+.apple-header h1 {
+    font-size: 2.8rem;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+    font-weight: 600;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+    color: white;
 }
 
-a {
-  color: #0d6efd;
-  text-decoration: none;
+.apple-header h1:hover {
+    transform: scale(1.05);
 }
 
-a:hover {
-  text-decoration: underline;
+.site-description {
+    font-weight: 300;
+    max-width: 600px;
+    margin: 0 auto;
+    opacity: 0.9;
 }
 
-.container {
-  max-width: 960px;
-  margin: 0 auto;
-  padding-left: 15px;
-  padding-right: 15px;
+.home-link {
+    color: white;
+    text-decoration: none;
+    display: inline-block;
+    position: relative;
+    transition: color 0.3s ease;
 }
 
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
+.home-link::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: var(--secondary-color);
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.3s ease;
 }
 
-/* Przyjemne buttony */
-button, .btn {
-  font-family: inherit;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  border-radius: .375rem;
+.home-link:hover {
+    color: var(--secondary-color);
+    text-decoration: none;
 }
 
-/* Jeśli robisz onepage z kotwicami */
-html {
-  scroll-behavior: smooth;
+.home-link:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
 }
 
-/* Kolorowanie listy */
+/* Main Content */
+main {
+    padding: 60px 0;
+    min-height: calc(100vh - 240px);
+}
+
+main .container,
+main .container-fluid {
+    background-color: rgba(255, 255, 255, 0.85);
+    border-radius: 12px;
+    padding: 40px;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Page titles */
+.page-title,
+.display-4 {
+    font-family: 'Poppins', sans-serif;
+    color: var(--primary-color);
+    margin-bottom: 30px;
+    position: relative;
+    display: inline-block;
+    font-weight: 600;
+}
+
+.page-title::after {
+    content: "";
+    position: absolute;
+    width: 50%;
+    height: 3px;
+    background: linear-gradient(to right, var(--primary-color), transparent);
+    bottom: -10px;
+    left: 0;
+}
+
+/* Lista jabłek - meta informacje */
+.meta-info {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+.meta-info h3 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+}
+
 .list-group-item {
-  background-color: #f8f9fa;
-  border: 1px solid #ddd;
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    padding: 12px 15px;
+    transition: background-color 0.3s ease;
 }
 
 .list-group-item:nth-child(odd) {
-  background-color: #e9ecef;
+    background-color: #e9ecef;
 }
 
+.list-group-item:hover {
+    background-color: #dee2e6;
+}
+
+/* Single Apple Page */
+.apple-single {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    padding: 30px;
+    margin-bottom: 30px;
+}
+
+.apple-image {
+    border-radius: 8px;
+    overflow: hidden;
+    height: 400px;
+    background-color: #f9f9f9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.5s ease;
+}
+
+.apple-image:hover {
+    transform: scale(1.02);
+}
+
+.apple-image img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.apple-content h2 {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+}
+
+.apple-description {
+    margin-bottom: 30px;
+    line-height: 1.7;
+}
+
+/* Card styling for single posts */
+.card {
+    border: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15) !important;
+}
+
+.card-img-top {
+    border-radius: 8px !important;
+    transition: transform 0.3s ease;
+}
+
+.card:hover .card-img-top {
+    transform: scale(1.02);
+}
+
+/* Buttons */
+.btn-primary,
+.button {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    display: inline-block;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary:hover,
+.button:hover {
+    background: #b54c3c;
+    border-color: #b54c3c;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    text-decoration: none;
+    color: white;
+}
+
+.btn-primary:active,
+.button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Links */
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #b54c3c;
+    text-decoration: underline;
+}
+
+/* Images */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 4px;
+}
+
+/* WordPress specific */
+.entry-content {
+    line-height: 1.7;
+}
+
+.entry-content p {
+    margin-bottom: 1rem;
+}
+
+/* Footer */
+footer {
+    background: linear-gradient(135deg, #333, #222);
+    color: white;
+    text-align: center;
+    padding: 30px 0;
+    font-size: 0.9rem;
+    margin-top: auto;
+}
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .apple-single {
+        grid-template-columns: 1fr;
+    }
+
+    .apple-image {
+        height: 300px;
+    }
+
+    .apple-header h1 {
+        font-size: 2rem;
+    }
+
+    main .container,
+    main .container-fluid {
+        padding: 20px;
+    }
+
+    .col-lg-8,
+    .col-lg-4 {
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 576px) {
+    .apple-header {
+        padding: 20px 0;
+    }
+    
+    .apple-header h1 {
+        font-size: 1.8rem;
+    }
+    
+    main {
+        padding: 30px 0;
+    }
+}
