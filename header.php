@@ -41,7 +41,7 @@
                 <p class="site-description">
                     <?php 
                     $description = get_bloginfo('description');
-                    echo $description ? esc_html($description) : 'Odkryj bogactwo smaków i odmian jabłek z całego świata';
+                    echo $description ? esc_html($description) : 'Odkryj świat jabłek — sortuj, smakuj, wybieraj najlepiej!';
                     ?>
                 </p>
             </div>

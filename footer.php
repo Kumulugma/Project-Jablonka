@@ -5,6 +5,10 @@
       <?php if ( get_bloginfo('description') ) : ?>
         <p class="small mt-2 opacity-75"><?php bloginfo('description'); ?></p>
       <?php endif; ?>
+        
+        <div id="support">
+                <span>Wspierane przez: <a href="//k3e.pl"><span>K</span>3e.pl</a></span>
+        </div>
     </div>
   </footer>
 
